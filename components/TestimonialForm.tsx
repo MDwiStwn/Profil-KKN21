@@ -3,7 +3,16 @@
 import { useActionState } from 'react'
 import { submitTestimonial } from '@/app/actions'
 
-const initialState = { success: false, message: '' }
+interface ActionState {
+    success: boolean;
+    message: string;
+    errors?: {
+        name?: string[];
+        message?: string[];
+    };
+}
+
+const initialState: ActionState = { success: false, message: '' }
 
 export default function TestimonialForm() {
     const [state, formAction, isPending] = useActionState(submitTestimonial, initialState)
