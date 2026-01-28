@@ -218,9 +218,9 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Map Section Replaced with Beams */}
-      <section id="map" className="container mx-auto px-4 scroll-mt-24">
-        <div className="relative bg-black rounded-[3rem] overflow-hidden min-h-[600px] shadow-2xl flex items-center justify-center text-center p-8 md:p-20 border border-white/10">
+      {/* Collaboration Section (Beams) */}
+      <section className="container mx-auto px-4">
+        <div className="relative bg-black rounded-[3rem] overflow-hidden min-h-[500px] shadow-2xl flex items-center justify-center text-center p-8 md:p-20 border border-white/10">
           {/* Animated Beams Background */}
           <div className="absolute inset-0 z-0 opacity-80">
             <Beams
@@ -254,6 +254,28 @@ export default async function Home() {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Map Section */}
+      <section id="map" className="container mx-auto px-4 scroll-mt-24">
+        <div className="text-center mb-10">
+          <h2 className="text-4xl font-black text-gray-900 mb-4 tracking-tighter leading-none">Lokasi Pengabdian</h2>
+          <div className="w-16 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
+          <p className="text-gray-500 font-medium">Temukan posko kami di Desa Sukodadi, Wagir.</p>
+        </div>
+        <div className="bg-gray-200 rounded-[3rem] overflow-hidden h-[500px] shadow-2xl relative border border-gray-100 transform transition hover:scale-[1.01] duration-500">
+          <iframe
+            width="100%"
+            height="100%"
+            frameBorder="0"
+            title="Peta Desa Sukodadi"
+            scrolling="no"
+            marginHeight={0}
+            marginWidth={0}
+            src="https://maps.google.com/maps?q=Desa%20Sukodadi%2C%20Kec.%20Wagir%2C%20Malang&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            className="filter grayscale-[20%] contrast-[1.1] w-full h-full"
+          ></iframe>
         </div>
       </section>
     </div>
