@@ -6,7 +6,7 @@ import { testimonialSchema } from '@/lib/schemas'
 import { headers } from 'next/headers'
 import { revalidatePath } from 'next/cache'
 
-export async function submitTestimonial(prevState: any, formData: FormData) {
+export async function submitTestimonial(prevState: unknown, formData: FormData) {
     const supabase = await createClient()
 
     // 1. Validate Input (Zod)

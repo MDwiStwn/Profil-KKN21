@@ -4,13 +4,16 @@ import Image from 'next/image'
 
 export const revalidate = 60 // ISR: Revalidate every 60 seconds
 
+import Beams from '@/components/Beams/Beams'
+
 export default async function Home() {
   const supabase = await createClient()
 
   // Fetch Data (Parallel) - Optimized
-  const [{ data: activities }, { data: testimonials }] = await Promise.all([
+  const [{ data: activities }, { data: testimonials }, { data: teamMembers }] = await Promise.all([
     supabase.from('activities').select('*').order('event_date', { ascending: false }).limit(6),
-    supabase.from('testimonials').select('*').eq('is_approved', true).order('created_at', { ascending: false }).limit(20)
+    supabase.from('testimonials').select('*').eq('is_approved', true).order('created_at', { ascending: false }).limit(20),
+    supabase.from('team_members').select('*').order('created_at', { ascending: true })
   ])
 
   return (
@@ -25,7 +28,7 @@ export default async function Home() {
         </div>
         <div className="z-10 text-center px-4 max-w-5xl animate-in fade-in slide-in-from-bottom-8 duration-1000">
           <div className="inline-block px-4 py-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm text-sm font-medium mb-6">
-            KKN UM 2024
+            KKN UNMER 2026
           </div>
           <h1 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
             KKN 21<br />Sukodadi
@@ -49,9 +52,27 @@ export default async function Home() {
       <section id="stats" className="container mx-auto px-4 -mt-32 relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { label: 'Program Kerja', value: '12+', icon: '🚀' },
-            { label: 'Warga Terlibat', value: '500+', icon: '👥' },
-            { label: 'Hari Pengabdian', value: '45', icon: '📅' },
+            { label: 'Program Kerja', value: '6', icon: '🚀' },
+            { label: 'Warga Terlibat', value: '100+', icon: '👥' },
+            {
+              label: 'Hari Pengabdian',
+              value: (() => {
+                // Logic: Start 10, +1 every day, max 30.
+                // Anchor date: Jan 28, 2026 (Today) implies 10.
+                const startDate = new Date('2026-01-28T00:00:00+07:00'); // WIB
+                const now = new Date();
+                // Calculate difference in days
+                const diffTime = now.getTime() - startDate.getTime();
+                const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+                // If diffDays < 0 (before start date), stick to 10.
+                const additionalDays = diffDays < 0 ? 0 : diffDays;
+
+                const totalDays = 10 + additionalDays;
+                return Math.min(totalDays, 30).toString();
+              })(),
+              icon: '📅'
+            },
           ].map((stat, i) => (
             <div key={i} className="bg-white/95 backdrop-blur-xl p-8 rounded-3xl shadow-2xl text-center border border-white/50 hover:scale-105 transition duration-300">
               <div className="text-4xl mb-2">{stat.icon}</div>
@@ -112,6 +133,43 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Team Section */}
+      <section id="team" className="container mx-auto px-4 scroll-mt-24 text-center">
+        <div className="mb-16">
+          <h2 className="text-5xl font-black text-gray-900 mb-4 tracking-tighter">Tim Kami</h2>
+          <div className="w-20 h-1.5 bg-blue-600 mx-auto rounded-full mb-6"></div>
+          <p className="text-gray-500 max-w-2xl mx-auto text-lg">Wajah-wajah di balik pengabdian KKN 21 Sukodadi.</p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-10">
+          {teamMembers?.map((member) => (
+            <div key={member.id} className="group text-center">
+              <div className="relative aspect-square mb-6 rounded-[2.5rem] overflow-hidden shadow-xl ring-4 ring-white group-hover:ring-blue-100 transition-all duration-500 group-hover:scale-[1.02]">
+                {member.image_url ? (
+                  <Image
+                    src={member.image_url}
+                    alt={member.name}
+                    fill
+                    className="object-cover group-hover:scale-110 transition duration-700"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 20vw"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gray-100 flex items-center justify-center text-4xl">👤</div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 mb-1 tracking-tight">{member.name}</h4>
+              <p className="text-blue-600 font-bold text-sm uppercase tracking-widest">{member.role}</p>
+            </div>
+          ))}
+          {(!teamMembers || teamMembers.length === 0) && (
+            <div className="col-span-full text-center py-20 bg-gray-50 rounded-3xl border-2 border-dashed border-gray-100">
+              <p className="text-gray-400">Daftar tim akan segera diperbarui.</p>
+            </div>
+          )}
+        </div>
+      </section>
+
       {/* Guestbook Section */}
       <section id="guestbook" className="container mx-auto px-4 scroll-mt-24">
         <div className="bg-blue-600 rounded-[2.5rem] p-8 md:p-16 text-white shadow-2xl relative overflow-hidden">
@@ -133,7 +191,7 @@ export default async function Home() {
               <div className="space-y-4 max-h-[600px] overflow-y-auto pr-4 custom-scrollbar-light">
                 {testimonials?.map((t) => (
                   <div key={t.id} className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/10 hover:bg-white/15 transition">
-                    <p className="text-white/90 italic mb-4 text-lg">"{t.message}"</p>
+                    <p className="text-white/90 italic mb-4 text-lg">&quot;{t.message}&quot;</p>
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 rounded-full bg-white text-blue-600 flex items-center justify-center font-bold text-lg shrink-0 shadow-lg">
                         {t.name.charAt(0).toUpperCase()}
@@ -160,24 +218,42 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Map Section */}
+      {/* Map Section Replaced with Beams */}
       <section id="map" className="container mx-auto px-4 scroll-mt-24">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-4">Lokasi Pengabdian</h2>
-          <p className="text-gray-600">Temukan kami di Desa Sukodadi.</p>
-        </div>
-        <div className="bg-gray-200 rounded-[2.5rem] overflow-hidden h-[500px] shadow-xl relative transform transition hover:scale-[1.01] duration-500">
-          <iframe
-            width="100%"
-            height="100%"
-            frameBorder="0"
-            title="Peta Desa Sukodadi"
-            scrolling="no"
-            marginHeight={0}
-            marginWidth={0}
-            src="https://maps.google.com/maps?q=Desa%20Sukodadi%2C%20Kec.%20Wagir%2C%20Malang&t=&z=13&ie=UTF8&iwloc=&output=embed"
-            className="filter grayscale-[20%] contrast-[1.1] w-full h-full"
-          ></iframe>
+        <div className="relative bg-black rounded-[3rem] overflow-hidden min-h-[600px] shadow-2xl flex items-center justify-center text-center p-8 md:p-20 border border-white/10">
+          {/* Animated Beams Background */}
+          <div className="absolute inset-0 z-0 opacity-80">
+            <Beams
+              beamWidth={2}
+              beamHeight={30}
+              beamNumber={12}
+              lightColor="#ffffff"
+              speed={1}
+              noiseIntensity={1.2}
+              scale={0.3}
+              rotation={10}
+            />
+          </div>
+          {/* Grain overlay */}
+          <div className="absolute inset-0 z-1 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
+
+          <div className="relative z-10 max-w-3xl">
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter leading-tight">
+              Ayo Berkolaborasi<br />Bersama Kami
+            </h2>
+            <p className="text-gray-400 text-lg md:text-xl mb-12 font-medium leading-relaxed">
+              KKN 21 Sukodadi berkomitmen memberikan dampak nyata bagi masyarakat.
+              Mari bersama-sama membangun desa yang lebih baik.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="#guestbook" className="px-10 py-5 bg-white text-black rounded-full font-black hover:bg-gray-100 transition hover:-translate-y-1 shadow-xl">
+                Tulis Pesan Warga
+              </a>
+              <a href="https://instagram.com/kkn21_sukodadi" target="_blank" className="px-10 py-5 border border-white/20 text-white rounded-full font-black hover:bg-white/10 transition backdrop-blur-md">
+                Ikuti Instagram
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </div>

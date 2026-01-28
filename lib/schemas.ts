@@ -17,3 +17,8 @@ export const activitySchema = z.object({
         message: "Invalid date format",
     }),
 });
+
+export const teamMemberSchema = z.object({
+    name: z.string().min(2, "Nama minimal 2 karakter"),
+    role: z.string().min(2, "Jabatan minimal 2 karakter"),
+});

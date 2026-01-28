@@ -1,7 +1,16 @@
 'use client'
 import { approveTestimonial, deleteTestimonial } from '@/app/admin/actions'
 
-export default function TestimonialModerationList({ initialTestimonials }: { initialTestimonials: any[] }) {
+interface Testimonial {
+    id: string;
+    name: string;
+    message: string;
+    is_approved: boolean;
+    ip_address: string;
+    created_at: string;
+}
+
+export default function TestimonialModerationList({ initialTestimonials }: { initialTestimonials: Testimonial[] }) {
     return (
         <div className="space-y-4 max-h-[600px] overflow-y-auto pr-2">
             {initialTestimonials.map((t) => (

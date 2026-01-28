@@ -70,7 +70,22 @@ alter table rate_limits enable row level security;
 -- No public policies needed, server-side only.
 
 
--- STORAGE (If creating bucket via SQL is supported, else manual)
--- insert into storage.buckets (id, name, public) values ('activity-photos', 'activity-photos', true);
--- create policy "Public Access" on storage.objects for select using ( bucket_id = 'activity-photos' );
--- create policy "Auth Upload" on storage.objects for insert with check ( bucket_id = 'activity-photos' and auth.role() = 'authenticated' );
+-- TEAM MEMBERS TABLE
+create table if not exists team_members (
+  id uuid default gen_random_uuid() primary key,
+  name text not null,
+  role text not null,
+  image_url text,
+  created_at timestamptz default now() not null
+);
+
+alter table team_members enable row level security;
+
+-- Team Members Policies
+create policy "Team members are viewable by everyone"
+  on team_members for select
+  using ( true );
+
+create policy "Admins can manage team members"
+  on team_members for all
+  using ( auth.role() = 'authenticated' );
