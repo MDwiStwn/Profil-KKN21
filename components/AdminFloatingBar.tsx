@@ -98,7 +98,7 @@ export default function AdminFloatingBar() {
             </div>
 
             {/* Mobile Sidebar Trigger (Hamburger) */}
-            <div className="md:hidden fixed top-4 right-4 z-[110]">
+            <div className="md:hidden fixed top-4 left-4 z-[110]">
                 <button
                     onClick={() => setIsOpen(true)}
                     className="w-12 h-12 bg-slate-900 text-white rounded-2xl flex items-center justify-center shadow-2xl border border-white/10 active:scale-95 transition-transform"
@@ -116,7 +116,7 @@ export default function AdminFloatingBar() {
                 />
 
                 {/* Sidebar Panel */}
-                <div className={`absolute top-0 right-0 w-[280px] h-full bg-slate-900 border-l border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] transition-transform duration-500 flex flex-col ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+                <div className={`absolute top-0 left-0 w-[280px] h-full bg-slate-900 border-r border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] transition-transform duration-500 flex flex-col ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
                     {/* Header with Close */}
                     <div className="p-6 flex items-center justify-between border-b border-white/5">
                         <div className="flex flex-col">
