@@ -34,7 +34,7 @@ export default function AdminFloatingBar() {
     }
 
     return (
-        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-4xl animate-in fade-in slide-in-from-bottom-8 duration-700">
+        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-4xl animate-in fade-in slide-in-from-top-8 duration-700">
             <div className="bg-slate-900/90 backdrop-blur-2xl border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.4)] rounded-[2.5rem] p-3 flex items-center justify-between gap-4">
                 {/* User Info */}
                 <div className="hidden lg:flex items-center gap-3 pl-3 pr-5 border-r border-white/10">
