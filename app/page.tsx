@@ -106,7 +106,10 @@ export default async function Home() {
             <h2 className="text-4xl font-bold mb-4 tracking-tight text-gray-900">Jurnal Kegiatan</h2>
             <p className="text-lg text-gray-600 max-w-xl">Dokumentasi visual perjalanan pengabdian kami. Setiap momen memiliki cerita.</p>
           </div>
-          <button className="text-blue-600 font-bold hover:underline">Lihat Semua Galeri &toea;</button>
+          <button className="flex items-center gap-1 text-blue-600 font-bold hover:gap-2 transition-all">
+            Lihat Semua Galeri
+            <ExternalLink size={18} />
+          </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
