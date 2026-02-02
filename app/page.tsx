@@ -1,6 +1,7 @@
 import { createClient } from '@/utils/supabase/server'
 import TestimonialForm from '@/components/TestimonialForm'
 import Image from 'next/image'
+import { ExternalLink } from 'lucide-react'
 
 export const revalidate = 60 // ISR: Revalidate every 60 seconds
 
