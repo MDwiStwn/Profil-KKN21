@@ -12,7 +12,7 @@ export default async function Navbar() {
                     KKN 21<span className="text-blue-600">.</span>
                 </Link>
                 {!user && (
-                    <div className="hidden md:flex gap-2 text-[13px] font-bold uppercase tracking-[0.2em] text-slate-500">
+                    <div className="hidden md:flex gap-2 text-[13px] font-bold uppercase tracking-[0.2em] antialiased">
                         {[
                             { name: 'Dampak', href: '/#stats' },
                             { name: 'Kegiatan', href: '/#activities' },
@@ -22,14 +22,14 @@ export default async function Navbar() {
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="relative px-6 py-2.5 transition-all duration-500 hover:text-blue-600 group rounded-full overflow-hidden"
+                                className="relative px-6 py-2.5 transition-all duration-500 group rounded-full"
                             >
-                                <span className="relative z-10 transition-transform duration-300 group-hover:-translate-y-0.5 inline-block text-slate-700 group-hover:text-blue-600 font-extrabold">
+                                <span className="relative z-10 transition-transform duration-300 group-hover:-translate-y-0.5 inline-block text-slate-800 group-hover:text-blue-600 font-extrabold">
                                     {link.name}
                                 </span>
 
                                 {/* Background Glow Pill */}
-                                <span className="absolute inset-0 bg-gradient-to-tr from-blue-50 to-indigo-50/30 rounded-full scale-50 opacity-0 transition-all duration-500 group-hover:scale-110 group-hover:opacity-100 -z-0 blur-sm" />
+                                <span className="absolute inset-0 bg-blue-50/80 rounded-full scale-75 opacity-0 transition-all duration-500 group-hover:scale-100 group-hover:opacity-100 -z-0" />
 
                                 {/* Subtle Bottom Border Line */}
                                 <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[3px] bg-blue-600 rounded-full transition-all duration-300 group-hover:w-4 opacity-0 group-hover:opacity-100" />
