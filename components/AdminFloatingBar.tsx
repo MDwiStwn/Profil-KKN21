@@ -98,7 +98,7 @@ export default function AdminFloatingBar() {
             </div>
 
             {/* Mobile Sidebar Trigger (Hamburger) */}
-            <div className="md:hidden fixed top-4 left-4 z-[110]">
+            <div className="md:hidden fixed top-4 right-4 z-[110]">
                 <button
                     onClick={() => setIsOpen(true)}
                     className="w-12 h-12 bg-slate-900 text-white rounded-2xl flex items-center justify-center shadow-2xl border border-white/10 active:scale-95 transition-transform"
