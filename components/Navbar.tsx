@@ -12,15 +12,15 @@ export default async function Navbar() {
                     KKN 21<span className="text-blue-600">.</span>
                 </Link>
                 {!user && (
-                    <div className="hidden md:flex gap-8 text-[11px] font-black uppercase tracking-[0.2em] text-slate-500">
+                    <div className="hidden md:flex gap-4 text-[13px] font-black uppercase tracking-[0.15em] text-slate-600">
                         {['Dampak', 'Kegiatan', 'Testimoni', 'Lokasi'].map((item) => (
                             <Link
                                 key={item}
                                 href={`/#${item === 'Dampak' ? 'stats' : item === 'Testimoni' ? 'guestbook' : item === 'Lokasi' ? 'map' : 'activities'}`}
-                                className="relative py-2 transition-colors hover:text-blue-600 group"
+                                className="relative px-5 py-2.5 transition-all duration-300 hover:text-blue-600 group"
                             >
-                                {item}
-                                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full" />
+                                <span className="relative z-10">{item}</span>
+                                <span className="absolute inset-0 bg-blue-50 rounded-full scale-0 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 -z-0" />
                             </Link>
                         ))}
                     </div>
