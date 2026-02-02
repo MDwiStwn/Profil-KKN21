@@ -42,14 +42,14 @@ export default async function AdminDashboard() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                 {/* Testimonial Section */}
-                <section className="bg-white p-8 rounded-[2rem] shadow-2xl shadow-blue-900/5 border border-white/50">
-                    <div className="flex items-center gap-4 mb-8">
-                        <div className="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-700 rotate-3 shadow-lg">
-                            <MessageSquare size={24} />
+                <section className="bg-white p-10 rounded-[3rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.06)] border border-gray-50">
+                    <div className="flex items-center gap-4 mb-10">
+                        <div className="w-14 h-14 bg-blue-50 rounded-[1.5rem] flex items-center justify-center text-blue-600 shadow-sm border border-blue-100">
+                            <MessageSquare size={26} />
                         </div>
                         <div>
-                            <h2 className="text-2xl font-bold text-gray-900 leading-none">Testimoni</h2>
-                            <p className="text-gray-400 text-sm font-medium">Moderasi pesan warga</p>
+                            <h2 className="text-2xl font-black text-slate-900 leading-none mb-1">Moderasi Testimoni</h2>
+                            <p className="text-gray-400 text-sm font-bold uppercase tracking-widest text-[10px]">Pesan dari warga</p>
                         </div>
                     </div>
                     <TestimonialModerationList initialTestimonials={testimonials || []} />
@@ -57,14 +57,14 @@ export default async function AdminDashboard() {
 
                 {/* Activity Management */}
                 <div className="space-y-8">
-                    <section className="bg-white p-8 rounded-[2rem] shadow-2xl shadow-purple-900/5 border border-white/50">
-                        <div className="flex items-center gap-4 mb-8">
-                            <div className="w-12 h-12 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-700 -rotate-3 shadow-lg">
-                                <PenTool size={24} />
+                    <section className="bg-white p-10 rounded-[3rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.06)] border border-gray-50">
+                        <div className="flex items-center gap-4 mb-10">
+                            <div className="w-14 h-14 bg-purple-50 rounded-[1.5rem] flex items-center justify-center text-purple-600 shadow-sm border border-purple-100">
+                                <PenTool size={26} />
                             </div>
                             <div>
-                                <h2 className="text-2xl font-bold text-gray-900 leading-none">Tambah Kegiatan</h2>
-                                <p className="text-gray-400 text-sm font-medium">Input dokumentasi baru</p>
+                                <h2 className="text-2xl font-black text-slate-900 leading-none mb-1">Tambah Dokumentasi</h2>
+                                <p className="text-gray-400 text-sm font-bold uppercase tracking-widest text-[10px]">Publikasi kegiatan baru</p>
                             </div>
                         </div>
                         <ActivityForm />
