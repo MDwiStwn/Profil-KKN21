@@ -2,12 +2,13 @@
 import { createClient } from '@/utils/supabase/client'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { LayoutDashboard, ExternalLink, LogOut, User } from 'lucide-react'
+import { LayoutDashboard, ExternalLink, LogOut, User, Menu, X, Home, BarChart3, Camera, MessageSquare, MapPin } from 'lucide-react'
 import { useRouter, usePathname } from 'next/navigation'
 import Image from 'next/image'
 
 export default function AdminFloatingBar() {
     const [user, setUser] = useState<any>(null)
+    const [isOpen, setIsOpen] = useState(false)
     const supabase = createClient()
     const router = useRouter()
     const pathname = usePathname()
