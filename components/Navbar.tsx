@@ -12,15 +12,27 @@ export default async function Navbar() {
                     KKN 21<span className="text-blue-600">.</span>
                 </Link>
                 {!user && (
-                    <div className="hidden md:flex gap-4 text-[13px] font-black uppercase tracking-[0.15em] text-slate-600">
-                        {['Dampak', 'Kegiatan', 'Testimoni', 'Lokasi'].map((item) => (
+                    <div className="hidden md:flex gap-2 text-[13px] font-bold uppercase tracking-[0.2em] text-slate-500">
+                        {[
+                            { name: 'Dampak', href: '/#stats' },
+                            { name: 'Kegiatan', href: '/#activities' },
+                            { name: 'Testimoni', href: '/#guestbook' },
+                            { name: 'Lokasi', href: '/#map' },
+                        ].map((link) => (
                             <Link
-                                key={item}
-                                href={`/#${item === 'Dampak' ? 'stats' : item === 'Testimoni' ? 'guestbook' : item === 'Lokasi' ? 'map' : 'activities'}`}
-                                className="relative px-5 py-2.5 transition-all duration-300 hover:text-blue-600 group"
+                                key={link.name}
+                                href={link.href}
+                                className="relative px-6 py-2.5 transition-all duration-500 hover:text-blue-600 group rounded-full overflow-hidden"
                             >
-                                <span className="relative z-10">{item}</span>
-                                <span className="absolute inset-0 bg-blue-50 rounded-full scale-0 opacity-0 transition-all duration-300 group-hover:scale-100 group-hover:opacity-100 -z-0" />
+                                <span className="relative z-10 transition-transform duration-300 group-hover:-translate-y-0.5 inline-block text-slate-700 group-hover:text-blue-600 font-extrabold">
+                                    {link.name}
+                                </span>
+
+                                {/* Background Glow Pill */}
+                                <span className="absolute inset-0 bg-gradient-to-tr from-blue-50 to-indigo-50/30 rounded-full scale-50 opacity-0 transition-all duration-500 group-hover:scale-110 group-hover:opacity-100 -z-0 blur-sm" />
+
+                                {/* Subtle Bottom Border Line */}
+                                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[3px] bg-blue-600 rounded-full transition-all duration-300 group-hover:w-4 opacity-0 group-hover:opacity-100" />
                             </Link>
                         ))}
                     </div>
