@@ -35,39 +35,9 @@ export default async function AdminDashboard() {
 
     return (
         <div className="container mx-auto px-4 py-8 max-w-6xl">
-            {/* Navigation Header */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100">
-                <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-blue-200 shadow-xl">
-                        <LayoutDashboard size={24} />
-                    </div>
-                    <div>
-                        <h1 className="text-2xl font-black text-gray-900 tracking-tight leading-none mb-1">KKN 21 Dashboard</h1>
-                        <p className="text-gray-400 text-xs font-bold uppercase tracking-widest">{user.email}</p>
-                    </div>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-3">
-                    <Link href="/" className="flex items-center gap-2 px-4 py-2 bg-gray-50 text-gray-600 text-sm font-bold rounded-xl hover:bg-gray-100 transition border border-gray-200">
-                        <ExternalLink size={16} />
-                        Lihat Website
-                    </Link>
-                    <Link href="/#stats" className="px-4 py-2 bg-blue-50 text-blue-600 text-sm font-bold rounded-xl hover:bg-blue-100 transition border border-blue-100">Dampak</Link>
-                    <Link href="/#activities" className="px-4 py-2 bg-blue-50 text-blue-600 text-sm font-bold rounded-xl hover:bg-blue-100 transition border border-blue-100">Kegiatan</Link>
-                    <Link href="/#guestbook" className="px-4 py-2 bg-blue-50 text-blue-600 text-sm font-bold rounded-xl hover:bg-blue-100 transition border border-blue-100">Testimoni</Link>
-                    <Link href="/#map" className="px-4 py-2 bg-blue-50 text-blue-600 text-sm font-bold rounded-xl hover:bg-blue-100 transition border border-blue-100">Lokasi</Link>
-
-                    <form action={async () => {
-                        'use server'
-                        const sb = await createClient()
-                        await sb.auth.signOut()
-                        redirect('/login')
-                    }}>
-                        <button className="px-5 py-2 bg-red-600 text-white text-sm font-bold rounded-xl hover:bg-red-700 transition shadow-lg shadow-red-200">
-                            Logout
-                        </button>
-                    </form>
-                </div>
+            <div className="mb-12">
+                <h1 className="text-4xl font-black text-gray-900 tracking-tight mb-2">Manajemen Konten</h1>
+                <p className="text-gray-500 font-medium">Selamat datang, <span className="text-blue-600">{user.email}</span></p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">

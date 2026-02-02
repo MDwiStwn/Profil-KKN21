@@ -20,12 +20,9 @@ export default async function Navbar() {
                     </div>
                 )}
                 {user ? (
-                    <Link
-                        href="/admin"
-                        className="px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition text-sm font-bold shadow-lg shadow-blue-100"
-                    >
-                        Dashboard
-                    </Link>
+                    <div className="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center border border-blue-100">
+                        <div className="w-2 h-2 bg-blue-600 rounded-full animate-pulse" />
+                    </div>
                 ) : (
                     <Link
                         href="/login"

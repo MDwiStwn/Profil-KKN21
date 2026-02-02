@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import AdminFloatingBar from "@/components/AdminFloatingBar";
 
 import { Instagram } from "lucide-react";
 
@@ -10,6 +11,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "KKN 21 Sukodadi - Profil Kegiatan",
   description: "Dokumentasi kegiatan dan profil KKN Kelompok 21 Desa Sukodadi, Wagir, Malang.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -24,6 +28,7 @@ export default function RootLayout({
         <main className="pt-16 min-h-screen">
           {children}
         </main>
+        <AdminFloatingBar />
         <footer className="bg-gray-900 text-white py-12 border-t border-gray-800">
           <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="text-center md:text-left">
