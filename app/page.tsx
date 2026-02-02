@@ -17,33 +17,49 @@ export default async function Home() {
   ])
 
   return (
-    <div className="flex flex-col gap-24 pb-24">
+    <div className="flex flex-col gap-32 pb-32 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-50/50 via-white to-white">
       {/* Hero Section */}
-      <section className="relative h-[85vh] flex items-center justify-center bg-gray-900 text-white overflow-hidden">
+      <section className="relative h-[90vh] flex items-center justify-center bg-[#020617] text-white overflow-hidden rounded-b-[4rem] shadow-2xl">
         <div className="absolute inset-0 z-0">
-          {/* Gradient Background - In production use a real image */}
-          <div className="w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900 via-gray-900 to-black opacity-80" />
-          {/* Grid Pattern overlay */}
-          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
+          {/* Enhanced Mesh Gradient */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,_#1e3a8a_0%,_transparent_50%),radial-gradient(circle_at_70%_70%,_#1e1b4b_0%,_transparent_50%)] opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#020617]/50 to-[#020617]" />
+
+          {/* Animated Glows */}
+          <div className="absolute top-1/4 -left-20 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px] animate-pulse" />
+          <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-indigo-600/20 rounded-full blur-[120px] animate-pulse delay-700" />
+
+          {/* Grain overlay */}
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-soft-light"></div>
         </div>
-        <div className="z-10 text-center px-4 max-w-5xl animate-in fade-in slide-in-from-bottom-8 duration-1000">
-          <div className="inline-block px-4 py-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm text-sm font-medium mb-6">
+
+        <div className="z-10 text-center px-4 max-w-5xl animate-in fade-in zoom-in duration-1000">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl text-xs font-black uppercase tracking-[0.2em] mb-8 text-blue-300">
+            <span className="w-2 h-2 bg-blue-500 rounded-full animate-ping" />
             KKN UNMER 2026
           </div>
-          <h1 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+          <h1 className="text-7xl md:text-9xl font-black mb-8 tracking-tighter leading-none bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/40 italic">
             KKN 21<br />Sukodadi
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
-            Membangun Desa, Memberdayakan Masyarakat.
+          <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
+            Membangun Desa, Memberdayakan Masyarakat.<br className="hidden md:block" />
             Sinergi mahasiswa dan warga untuk kemajuan Desa Sukodadi.
           </p>
-          <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <a href="#activities" className="px-8 py-4 bg-white text-gray-900 rounded-full font-bold hover:bg-gray-100 transition shadow-xl hover:shadow-2xl hover:-translate-y-1">
-              Lihat Kegiatan
+          <div className="flex flex-col sm:flex-row gap-5 justify-center">
+            <a href="#activities" className="group px-10 py-5 bg-white text-gray-900 rounded-full font-black text-sm hover:bg-gray-100 transition shadow-[0_20px_50px_-10px_rgba(255,255,255,0.3)] hover:-translate-y-1 flex items-center justify-center gap-2">
+              JELAJAHI KEGIATAN
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
             </a>
-            <a href="#guestbook" className="px-8 py-4 bg-transparent border border-white/30 text-white rounded-full font-bold hover:bg-white/10 transition backdrop-blur-sm">
-              Tulis Pesan
+            <a href="#guestbook" className="px-10 py-5 bg-white/5 border border-white/10 text-white rounded-full font-black text-sm hover:bg-white/10 transition backdrop-blur-md">
+              TULIS PESAN
             </a>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
+          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center p-1">
+            <div className="w-1 h-2 bg-white rounded-full" />
           </div>
         </div>
       </section>
@@ -74,10 +90,10 @@ export default async function Home() {
               icon: '📅'
             },
           ].map((stat, i) => (
-            <div key={i} className="bg-white/95 backdrop-blur-xl p-8 rounded-3xl shadow-2xl text-center border border-white/50 hover:scale-105 transition duration-300">
-              <div className="text-4xl mb-2">{stat.icon}</div>
-              <div className="text-5xl font-black text-gray-900 mb-2 tracking-tight">{stat.value}</div>
-              <div className="text-gray-500 font-medium uppercase tracking-wide text-sm">{stat.label}</div>
+            <div key={i} className="group bg-white p-10 rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08)] text-center border border-gray-100 hover:shadow-[0_48px_80px_-16px_rgba(59,130,246,0.12)] transition-all duration-500 hover:-translate-y-2">
+              <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-500">{stat.icon}</div>
+              <div className="text-6xl font-black text-slate-900 mb-2 tracking-tighter">{stat.value}</div>
+              <div className="text-blue-600 font-bold uppercase tracking-[0.2em] text-[10px]">{stat.label}</div>
             </div>
           ))}
         </div>

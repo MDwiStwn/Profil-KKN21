@@ -34,16 +34,16 @@ export default function AdminFloatingBar() {
     }
 
     return (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-4xl animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div className="bg-white/90 backdrop-blur-xl border border-gray-200 shadow-2xl rounded-[2rem] p-3 flex items-center justify-between gap-4">
+        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] w-[95%] max-w-4xl animate-in fade-in slide-in-from-bottom-8 duration-700">
+            <div className="bg-slate-900/90 backdrop-blur-2xl border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.4)] rounded-[2.5rem] p-3 flex items-center justify-between gap-4">
                 {/* User Info */}
-                <div className="hidden lg:flex items-center gap-3 pl-3 pr-4 border-r border-gray-100">
-                    <div className="w-10 h-10 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
+                <div className="hidden lg:flex items-center gap-3 pl-3 pr-5 border-r border-white/10">
+                    <div className="w-11 h-11 bg-white rounded-2xl flex items-center justify-center text-blue-600 shadow-xl">
                         <User size={20} />
                     </div>
                     <div className="flex flex-col">
-                        <span className="text-xs font-black text-gray-900 leading-none mb-1">KKN 21 Admin</span>
-                        <span className="text-[10px] text-gray-400 font-bold uppercase tracking-tight truncate max-w-[120px]">
+                        <span className="text-[10px] font-black text-blue-400 uppercase tracking-widest leading-none mb-1">Authenticated</span>
+                        <span className="text-sm text-white font-black tracking-tight truncate max-w-[120px]">
                             {user.email?.split('@')[0]}
                         </span>
                     </div>

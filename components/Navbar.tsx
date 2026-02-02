@@ -6,10 +6,10 @@ export default async function Navbar() {
     const { data: { user } } = await supabase.auth.getUser()
 
     return (
-        <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm">
-            <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-                <Link href="/" className="font-bold text-xl text-blue-600 tracking-tight">
-                    KKN 21 Sukodadi
+        <nav className="fixed top-0 w-full z-50 bg-white/60 backdrop-blur-2xl border-b border-gray-100/50">
+            <div className="container mx-auto px-6 h-16 flex items-center justify-between">
+                <Link href="/" className="font-black text-xl text-slate-900 tracking-tighter uppercase italic">
+                    KKN 21<span className="text-blue-600">.</span>
                 </Link>
                 {!user && (
                     <div className="hidden md:flex gap-6 text-sm font-medium text-gray-600">
