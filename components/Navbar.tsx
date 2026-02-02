@@ -11,12 +11,14 @@ export default async function Navbar() {
                 <Link href="/" className="font-bold text-xl text-blue-600 tracking-tight">
                     KKN 21 Sukodadi
                 </Link>
-                <div className="hidden md:flex gap-6 text-sm font-medium text-gray-600">
-                    <Link href="/#stats" className="hover:text-blue-600 transition-colors">Dampak</Link>
-                    <Link href="/#activities" className="hover:text-blue-600 transition-colors">Kegiatan</Link>
-                    <Link href="/#guestbook" className="hover:text-blue-600 transition-colors">Testimoni</Link>
-                    <Link href="/#map" className="hover:text-blue-600 transition-colors">Lokasi</Link>
-                </div>
+                {!user && (
+                    <div className="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+                        <Link href="/#stats" className="hover:text-blue-600 transition-colors">Dampak</Link>
+                        <Link href="/#activities" className="hover:text-blue-600 transition-colors">Kegiatan</Link>
+                        <Link href="/#guestbook" className="hover:text-blue-600 transition-colors">Testimoni</Link>
+                        <Link href="/#map" className="hover:text-blue-600 transition-colors">Lokasi</Link>
+                    </div>
+                )}
                 {user ? (
                     <Link
                         href="/admin"
