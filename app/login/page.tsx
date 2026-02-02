@@ -3,6 +3,7 @@ import { createClient } from '@/utils/supabase/client'
 import { useState } from 'react'
 import { Loader2 } from 'lucide-react'
 import Beams from '@/components/Beams/Beams'
+import Link from 'next/link'
 
 export default function Login() {
     const [loading, setLoading] = useState(false)
