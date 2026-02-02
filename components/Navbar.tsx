@@ -12,11 +12,17 @@ export default async function Navbar() {
                     KKN 21<span className="text-blue-600">.</span>
                 </Link>
                 {!user && (
-                    <div className="hidden md:flex gap-6 text-sm font-medium text-gray-600">
-                        <Link href="/#stats" className="hover:text-blue-600 transition-colors">Dampak</Link>
-                        <Link href="/#activities" className="hover:text-blue-600 transition-colors">Kegiatan</Link>
-                        <Link href="/#guestbook" className="hover:text-blue-600 transition-colors">Testimoni</Link>
-                        <Link href="/#map" className="hover:text-blue-600 transition-colors">Lokasi</Link>
+                    <div className="hidden md:flex gap-8 text-[11px] font-black uppercase tracking-[0.2em] text-slate-500">
+                        {['Dampak', 'Kegiatan', 'Testimoni', 'Lokasi'].map((item) => (
+                            <Link
+                                key={item}
+                                href={`/#${item === 'Dampak' ? 'stats' : item === 'Testimoni' ? 'guestbook' : item === 'Lokasi' ? 'map' : 'activities'}`}
+                                className="relative py-2 transition-colors hover:text-blue-600 group"
+                            >
+                                {item}
+                                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full" />
+                            </Link>
+                        ))}
                     </div>
                 )}
                 {user ? (
