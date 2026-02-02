@@ -236,37 +236,55 @@ export default async function Home() {
 
       {/* Collaboration Section (Beams) */}
       <section className="container mx-auto px-4">
-        <div className="relative bg-black rounded-[3rem] overflow-hidden min-h-[500px] shadow-2xl flex items-center justify-center text-center p-8 md:p-20 border border-white/10">
-          {/* Animated Beams Background */}
-          <div className="absolute inset-0 z-0 opacity-80">
-            <Beams
-              beamWidth={2}
-              beamHeight={30}
-              beamNumber={12}
-              lightColor="#ffffff"
-              speed={1}
-              noiseIntensity={1.2}
-              scale={0.3}
-              rotation={10}
-            />
-          </div>
-          {/* Grain overlay */}
-          <div className="absolute inset-0 z-1 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
+        <div className="relative bg-[#020617] rounded-[4rem] overflow-hidden min-h-[600px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] flex items-center justify-center text-center p-8 md:p-24 border border-white/5">
+          {/* Enhanced Mesh Gradient Background */}
+          <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,_#1e40af_0%,_transparent_40%),radial-gradient(circle_at_80%_70%,_#4c1d95_0%,_transparent_40%)] opacity-40" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#020617] via-transparent to-[#020617] opacity-80" />
 
-          <div className="relative z-10 max-w-3xl">
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter leading-tight">
+            {/* Animated Beams Background */}
+            <div className="absolute inset-0 opacity-40 mix-blend-screen">
+              <Beams
+                beamWidth={3}
+                beamHeight={40}
+                beamNumber={15}
+                lightColor="#3b82f6"
+                speed={0.8}
+                noiseIntensity={1.5}
+                scale={0.4}
+                rotation={15}
+              />
+            </div>
+
+            {/* Floating Glows */}
+            <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse" />
+            <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] animate-pulse delay-1000" />
+          </div>
+
+          {/* Grain overlay */}
+          <div className="absolute inset-0 z-1 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay pointer-events-none"></div>
+
+          <div className="relative z-10 max-w-4xl space-y-10">
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-2xl text-[10px] font-black uppercase tracking-[0.3em] text-blue-400">
+              Prakarsa Bersama
+            </div>
+
+            <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none italic bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/30">
               Ayo Berkolaborasi<br />Bersama Kami
             </h2>
-            <p className="text-gray-400 text-lg md:text-xl mb-12 font-medium leading-relaxed">
+
+            <p className="text-gray-400 text-lg md:text-xl font-medium leading-relaxed max-w-2xl mx-auto">
               KKN 21 Sukodadi berkomitmen memberikan dampak nyata bagi masyarakat.
               Mari bersama-sama membangun desa yang lebih baik.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#guestbook" className="px-10 py-5 bg-white text-black rounded-full font-black hover:bg-gray-100 transition hover:-translate-y-1 shadow-xl">
-                Tulis Pesan Warga
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center pt-6">
+              <a href="#guestbook" className="group px-12 py-6 bg-white text-slate-900 rounded-full font-black text-sm transition-all hover:bg-blue-50 hover:-translate-y-1 shadow-[0_20px_50px_-10px_rgba(255,255,255,0.2)] flex items-center justify-center gap-3">
+                TULIS PESAN WARGA
+                <span className="group-hover:translate-x-1 transition-transform">→</span>
               </a>
-              <a href="https://instagram.com/kkn21_sukodadi" target="_blank" className="px-10 py-5 border border-white/20 text-white rounded-full font-black hover:bg-white/10 transition backdrop-blur-md">
-                Ikuti Instagram
+              <a href="https://instagram.com/kkn21_sukodadi" target="_blank" className="px-12 py-6 bg-white/5 border border-white/10 text-white rounded-full font-black text-sm hover:bg-white/10 transition-all backdrop-blur-xl border-white/20">
+                IKUTI INSTAGRAM
               </a>
             </div>
           </div>
